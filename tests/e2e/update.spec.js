@@ -25,6 +25,8 @@ test('a new version shows the update banner on Home, never during a puzzle', asy
   await page.getByRole('button', { name: 'Levels' }).click();
   await expect(page.getByText('A new version is ready.')).toBeVisible();
   await page.getByRole('button', { name: 'Refresh' }).click();
-  await expect.poll(() => page.evaluate(async () => (await caches.keys()).join()), { timeout: 15000 }).toContain(build);
+  // The page reloads itself here, so tolerate the moment the old page is torn down.
+  await expect.poll(() => page.evaluate(async () => (await caches.keys()).join()).catch(() => ''), { timeout: 15000 }).toContain(build);
+  await page.waitForLoadState('load');
   await expect(page.getByText('A new version is ready.')).toHaveCount(0);
 });

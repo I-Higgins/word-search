@@ -1,0 +1,337 @@
+/*
+  Design tokens. Values come from the Claude Design export in design/source/*.dc.html.
+  Colours: one block per theme. Everything else in the app reads these variables.
+
+  Light theme   = exactly the design.
+  Dark / High contrast = only swatches exist in the design (Settings > Colours);
+  the full palettes below are derived from those swatches (see design/NOTES.md).
+*/
+
+/* ---------- Shared: type, spacing, radii (iPad sizes) ---------- */
+:root {
+  --font-ui: ui-rounded, 'SF Pro Rounded', -apple-system, system-ui, 'Segoe UI', sans-serif;
+  --font-display: ui-serif, 'New York', Georgia, serif;
+
+  /* Text size multiplier: Normal 1, Large 1.15, Extra large 1.3 (set by data-text on <html>) */
+  --ts: 1;
+
+  /* Font sizes before the multiplier (iPad) */
+  --fs-title-base: 36px;      /* Home h1 */
+  --fs-screen-title-base: 32px; /* Levels/Settings/Game h1 */
+  --fs-btn-base: 22px;
+  --fs-cont-base: 30px;
+  --fs-body-base: 20px;
+  --fs-h2-base: 28px;
+  --fs-tile-base: 22px;
+  --fs-small-base: 18px;
+  --fs-play-base: 26px;
+  --fs-seg-base: 20px;
+  --fs-num-base: 36px;
+  --fs-num-small-base: 17px;
+  --fs-card-h2-base: 24px;
+  --fs-settings-body-base: 19px;
+  --fs-opt-base: 18px;
+  --fs-dialog-title-base: 30px;
+  --fs-piece-base: 19px;      /* banner, install card, error card */
+  --fs-piece-title-base: 25px;
+  --fs-word-base: 22px;       /* game word list (not in design) */
+
+  --fs-title: calc(var(--fs-title-base) * var(--ts));
+  --fs-screen-title: calc(var(--fs-screen-title-base) * var(--ts));
+  --fs-btn: calc(var(--fs-btn-base) * var(--ts));
+  --fs-cont: calc(var(--fs-cont-base) * var(--ts));
+  --fs-body: calc(var(--fs-body-base) * var(--ts));
+  --fs-h2: calc(var(--fs-h2-base) * var(--ts));
+  --fs-tile: calc(var(--fs-tile-base) * var(--ts));
+  --fs-small: calc(var(--fs-small-base) * var(--ts));
+  --fs-play: calc(var(--fs-play-base) * var(--ts));
+  --fs-seg: calc(var(--fs-seg-base) * var(--ts));
+  --fs-num: calc(var(--fs-num-base) * var(--ts));
+  --fs-num-small: calc(var(--fs-num-small-base) * var(--ts));
+  --fs-card-h2: calc(var(--fs-card-h2-base) * var(--ts));
+  --fs-settings-body: calc(var(--fs-settings-body-base) * var(--ts));
+  --fs-opt: calc(var(--fs-opt-base) * var(--ts));
+  --fs-dialog-title: calc(var(--fs-dialog-title-base) * var(--ts));
+  --fs-piece: calc(var(--fs-piece-base) * var(--ts));
+  --fs-piece-title: calc(var(--fs-piece-title-base) * var(--ts));
+  --fs-word: calc(var(--fs-word-base) * var(--ts));
+
+  --icon: 28px;
+
+  /* Layout */
+  --margin: 32px;
+  --safe-top: 24px;
+  --safe-bottom: 36px;
+  --gap: 20px;
+  --bar-h: 64px;
+  --btn-h: 60px;
+  --btn-pad: 20px;
+  --btn-pad-l: 16px;
+  --btn-pad-r: 24px;
+  --cont-h: 104px;
+  --cont-pad: 28px;
+  --cont-gap: 20px;
+  --cont-disc: 68px;
+  --cont-icon: 44px;
+  --tile-gap: 16px;
+  --tile-h: 196px;
+  --tile-pad: 20px;
+  --disc: 64px;
+  --disc-icon: 42px;
+  --title-disc: 52px;
+  --title-disc-icon: 34px;
+  --play-h: 88px;
+  --card-pad: 22px;
+  --opt-h: 116px;
+  --dialog-w: 520px;
+  --dialog-pad: 36px;
+  --min-target: 44px;
+
+  /* Radii */
+  --r-tile: 20px;
+  --r-hero: 22px;
+  --r-level: 18px;
+  --r-option: 16px;
+  --r-seg: 20px;
+  --r-seg-item: 15px;
+  --r-banner: 18px;
+  --r-card: 22px;
+  --r-dialog: 28px;
+  --r-dialog-btn: 18px;
+  --r-bar: 4px;
+
+  /* Motion (not specified in the design; gentle by default, removed under reduced motion) */
+  --dur-fast: 120ms;
+  --dur: 220ms;
+  --dur-slow: 420ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Phone sizes (design: iPhone 390x844) */
+@media (max-width: 599px) {
+  :root {
+    --fs-title-base: 26px;
+    --fs-screen-title-base: 24px;
+    --fs-btn-base: 18px;
+    --fs-cont-base: 24px;
+    --fs-body-base: 17px;
+    --fs-h2-base: 22px;
+    --fs-tile-base: 18px;
+    --fs-small-base: 15px;
+    --fs-play-base: 22px;
+    --fs-seg-base: 18px;
+    --fs-num-base: 26px;
+    --fs-num-small-base: 15px;
+    --fs-card-h2-base: 20px;
+    --fs-settings-body-base: 16px;
+    --fs-opt-base: 15px;
+    --fs-dialog-title-base: 24px;
+    --fs-piece-base: 17px;
+    --fs-piece-title-base: 22px;
+    --fs-word-base: 18px;
+    --icon: 24px;
+
+    --margin: 12px;
+    --safe-top: 12px;
+    --safe-bottom: 12px;
+    --gap: 14px;
+    --bar-h: 52px;
+    --btn-h: 52px;
+    --btn-pad: 14px;
+    --btn-pad-l: 10px;
+    --btn-pad-r: 14px;
+    --cont-h: 88px;
+    --cont-pad: 16px;
+    --cont-gap: 14px;
+    --cont-disc: 56px;
+    --cont-icon: 36px;
+    --tile-gap: 10px;
+    --tile-h: 170px;
+    --tile-pad: 14px;
+    --disc: 52px;
+    --disc-icon: 34px;
+    --title-disc: 40px;
+    --title-disc-icon: 26px;
+    --play-h: 72px;
+    --card-pad: 16px;
+    --opt-h: 96px;
+    --dialog-w: 350px;
+    --dialog-pad: 24px;
+  }
+}
+
+:root[data-text='large'] { --ts: 1.15; }
+:root[data-text='xl'] { --ts: 1.3; }
+
+/* ---------- Light (default) — from the design ---------- */
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+  --c-bg: #F6F1E7;
+  --c-ink: #1E1C18;
+  --c-ink-muted: #4A453C;
+  --c-ink-soft: #3D382F;
+  --c-surface: #FFFDF8;
+  --c-line: #E2D8C4;
+  --c-line-strong: #8C8270;
+  --c-line-tile: #CFC5B1;
+  --c-track: #EDE6D8;
+  --c-primary: #1F3A5F;
+  --c-primary-hover: #142842;
+  --c-on-primary: #FFFFFF;
+  --c-on-primary-muted: #DCE5F0;
+  --c-accent: #1F3A5F;          /* rings, selected borders, icons */
+  --c-selected-bg: #E6ECF3;
+  --c-info-bg: #E6ECF3;
+  --c-info-line: #7F96B2;
+  --c-done-bg: #E3F2EB;
+  --c-done-line: #9CC9B6;
+  --c-done-ink: #1F5B45;
+  --c-danger: #8B2E22;
+  --c-warn-bg: #FBE3B5;
+  --c-warn-line: #A86400;
+  --c-warn-ink: #6B4200;
+  --c-link: #1F3A5F;
+  --c-scrim: rgba(30, 28, 24, 0.5);
+  --c-icon: #1F3A5F;
+  --c-switch-knob: #FFFFFF;
+
+  --tint-1: #CFE4F1;
+  --tint-2: #FBE3B5;
+  --tint-3: #CBEBDD;
+  --tint-4: #F0D9EA;
+  --tint-5: #F9D9C8;
+  --tint-6: #D3ECF8;
+  --tint-7: #F3EA94;
+  --tint-8: #E3E5E8;
+
+  /* Game grid (not in the design; built from the palette above) */
+  --c-cell-ink: #1E1C18;
+  --c-select-fill: rgba(31, 58, 95, 0.16);
+  --c-select-line: #1F3A5F;
+  --c-anchor-bg: #1F3A5F;
+  --c-anchor-ink: #FFFFFF;
+  --c-wrong-fill: rgba(139, 46, 34, 0.14);
+  --c-found-line: rgba(30, 28, 24, 0.22);
+
+  --shadow-hero: 0 2px 8px rgba(31, 58, 95, 0.25);
+  --shadow-tile: 0 1px 3px rgba(60, 45, 20, 0.06);
+  --shadow-seg: 0 1px 3px rgba(60, 45, 20, 0.12);
+  --shadow-card: 0 2px 6px rgba(60, 45, 20, 0.08);
+  --shadow-dialog: 0 16px 48px rgba(30, 28, 24, 0.25);
+}
+
+/* ---------- Dark — derived from the design's Dark swatch (#20252B / #F2EEE6) ---------- */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --c-bg: #20252B;
+  --c-ink: #F2EEE6;
+  --c-ink-muted: #C9C2B5;
+  --c-ink-soft: #DAD3C6;
+  --c-surface: #2A3038;
+  --c-line: #3C444E;
+  --c-line-strong: #8E97A2;
+  --c-line-tile: #525C67;
+  --c-track: #363E47;
+  --c-primary: #33608F;
+  --c-primary-hover: #3D6EA3;
+  --c-on-primary: #FFFFFF;
+  --c-on-primary-muted: #DCE7F3;
+  --c-accent: #A9C6E8;
+  --c-selected-bg: #2E3F53;
+  --c-info-bg: #2E3F53;
+  --c-info-line: #6F8DB1;
+  --c-done-bg: #1F3A31;
+  --c-done-line: #4E8C74;
+  --c-done-ink: #A8DCC6;
+  --c-danger: #F2A397;
+  --c-warn-bg: #4A3B1E;
+  --c-warn-line: #E1A94C;
+  --c-warn-ink: #F6D79F;
+  --c-link: #A9C6E8;
+  --c-scrim: rgba(0, 0, 0, 0.6);
+  --c-icon: #E4EEF8;
+  --c-switch-knob: #F2EEE6;
+
+  --tint-1: #2D4A5E;
+  --tint-2: #5A4728;
+  --tint-3: #2D5244;
+  --tint-4: #523A4D;
+  --tint-5: #5B4134;
+  --tint-6: #2E5266;
+  --tint-7: #55502A;
+  --tint-8: #444A52;
+
+  --c-cell-ink: #F2EEE6;
+  --c-select-fill: rgba(169, 198, 232, 0.22);
+  --c-select-line: #A9C6E8;
+  --c-anchor-bg: #A9C6E8;
+  --c-anchor-ink: #14202E;
+  --c-wrong-fill: rgba(242, 163, 151, 0.18);
+  --c-found-line: rgba(242, 238, 230, 0.25);
+
+  --shadow-hero: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-tile: 0 1px 3px rgba(0, 0, 0, 0.25);
+  --shadow-seg: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-dialog: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- High contrast — derived from the design's swatch (#FFFFFF / #000000) ---------- */
+:root[data-theme='hc'] {
+  color-scheme: light;
+  --c-bg: #FFFFFF;
+  --c-ink: #000000;
+  --c-ink-muted: #000000;
+  --c-ink-soft: #000000;
+  --c-surface: #FFFFFF;
+  --c-line: #000000;
+  --c-line-strong: #000000;
+  --c-line-tile: #000000;
+  --c-track: #FFFFFF;
+  --c-primary: #000000;
+  --c-primary-hover: #000000;
+  --c-on-primary: #FFFFFF;
+  --c-on-primary-muted: #FFFFFF;
+  --c-accent: #000000;
+  --c-selected-bg: #FFE45C;
+  --c-info-bg: #FFFFFF;
+  --c-info-line: #000000;
+  --c-done-bg: #FFFFFF;
+  --c-done-line: #000000;
+  --c-done-ink: #000000;
+  --c-danger: #A30000;
+  --c-warn-bg: #FFE45C;
+  --c-warn-line: #000000;
+  --c-warn-ink: #000000;
+  --c-link: #0000C8;
+  --c-scrim: rgba(0, 0, 0, 0.7);
+  --c-icon: #000000;
+  --c-switch-knob: #FFFFFF;
+
+  --tint-1: #FFFFFF;
+  --tint-2: #FFFFFF;
+  --tint-3: #FFFFFF;
+  --tint-4: #FFFFFF;
+  --tint-5: #FFFFFF;
+  --tint-6: #FFFFFF;
+  --tint-7: #FFFFFF;
+  --tint-8: #FFFFFF;
+
+  --c-cell-ink: #000000;
+  --c-select-fill: rgba(0, 0, 0, 0.12);
+  --c-select-line: #000000;
+  --c-anchor-bg: #000000;
+  --c-anchor-ink: #FFFFFF;
+  --c-wrong-fill: rgba(163, 0, 0, 0.2);
+  --c-found-line: #000000;
+
+  --shadow-hero: none;
+  --shadow-tile: none;
+  --shadow-seg: none;
+  --shadow-card: none;
+  --shadow-dialog: 0 0 0 3px #000000;
+}
+
+/* Found-word capsules use the tints; in high contrast they all become bright yellow. */
+:root[data-theme='hc'] { --c-found-fill: #FFE45C; }

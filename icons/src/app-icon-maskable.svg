@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Maskable variant: full-bleed background, artwork inside the central 80% safe zone. -->
+  <rect width="512" height="512" fill="#1F3A5F"/>
+  <g transform="translate(56.32 56.32) scale(0.78)">  
+  <rect x="72" y="72" width="368" height="368" rx="44" fill="#FFFDF8"/>
+  <g stroke="#E2D8C4" stroke-width="4">
+    <path d="M164 80v352M256 80v352M348 80v352M80 164h352M80 256h352M80 348h352"/>
+  </g>
+  <line x1="118" y1="118" x2="394" y2="394" stroke="#F3EA94" stroke-width="72" stroke-linecap="round"/>
+  <line x1="118" y1="302" x2="302" y2="302" stroke="#CBEBDD" stroke-width="72" stroke-linecap="round" opacity="0.95"/>
+  <g font-family="Georgia, 'DejaVu Serif', serif" font-weight="700" font-size="64" fill="#1E1C18" text-anchor="middle" dominant-baseline="central">
+    <text x="118" y="118">W</text><text x="210" y="118">K</text><text x="302" y="118">S</text><text x="394" y="118">B</text>
+    <text x="118" y="210">A</text><text x="210" y="210">O</text><text x="302" y="210">L</text><text x="394" y="210">T</text>
+    <text x="118" y="302">F</text><text x="210" y="302">I</text><text x="302" y="302">N</text><text x="394" y="302">E</text>
+    <text x="118" y="394">M</text><text x="210" y="394">U</text><text x="302" y="394">P</text><text x="394" y="394">D</text>
+  </g>
+  </g>
+</svg>

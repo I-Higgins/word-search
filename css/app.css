@@ -154,7 +154,7 @@ ul, ol { padding: 0; list-style: none; }
 /* ---------- Home ---------- */
 .hero {
   height: auto;
-  min-height: var(--cont-h);
+  min-height: calc(var(--cont-h) * min(var(--ts), 1.2));
   padding: 12px var(--cont-pad);
   display: flex;
   align-items: center;
@@ -234,7 +234,6 @@ ul, ol { padding: 0; list-style: none; }
 .topic-name { font-size: var(--fs-tile); font-weight: 800; line-height: 1.2; }
 .topic-progress { font-size: var(--fs-small); font-weight: 600; line-height: 1.25; color: var(--c-ink-muted); }
 .bar {
-  margin-top: auto;
   width: 100%;
   height: 8px;
   border-radius: var(--r-bar);
@@ -794,3 +793,9 @@ ul, ol { padding: 0; list-style: none; }
 .pill svg, .play-btn svg, .hero > svg { width: var(--icon); height: var(--icon); flex: none; }
 .level-sub svg { width: 1em; height: 1em; }
 .word-check svg { width: 1em; height: 1em; display: block; }
+
+.meta-short { display: none; }
+@media (max-width: 599px) {
+  .meta-long { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .meta-short { display: inline; }
+}

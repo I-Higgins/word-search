@@ -271,7 +271,7 @@ function levelsScreen(cat) {
         <span class="title-disc" style="background:${tintOf(cat)}" aria-hidden="true">${categoryIcon(cat.icon, parseInt(getVar('--title-disc-icon'), 10) || 34)}</span>
         <h1>${esc(cat.name)}</h1>
       </div>
-      <div class="topbar-meta"><span class="meta-long">${done.size} of ${LEVELS_PER_CATEGORY} done</span></div>
+      <div class="topbar-meta"><span class="meta-long">${done.size} of ${LEVELS_PER_CATEGORY} done</span><span class="meta-short" aria-hidden="true">${done.size} done</span></div>
     </header>
     ${updateBanner()}
     <button class="play-btn" data-action="play" data-cat="${cat.id}" data-level="${next}">${uiIcon('play', 28)}Play level ${next}</button>

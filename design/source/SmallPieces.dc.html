@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Small pieces — update banner, install card, error state</title>
+<script src="14ad9555-e862-47d8-93e2-f93a4f27f0a3"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+a{color:#1F3A5F}a:hover{color:#142842}
+</style>
+</helmet>
+<div style="width: 1180px; height: 820px; box-sizing: border-box; padding: 40px; background: #F6F1E7; color: #1E1C18; font-family: ui-rounded, 'SF Pro Rounded', -apple-system, system-ui, 'Segoe UI', sans-serif; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; align-items: start">
+
+  <!-- Update banner -->
+  <div style="display: flex; flex-direction: column; gap: 16px">
+    <div style="font-size: 16px; font-weight: 800; letter-spacing: 0.06em; color: #4A453C">UPDATE BANNER</div>
+    <div role="status" style="box-sizing: border-box; padding: 12px 12px 12px 18px; background: #E6ECF3; border: 2px solid #7F96B2; border-radius: 18px; display: flex; align-items: center; gap: 14px">
+      <svg width="28" height="28" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1F3A5F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M20 11a8 8 0 1 0-2.3 5.7"></path><path d="M20 4v7h-7"></path></svg>
+      <span style="flex: 1 1 auto; font-size: 19px; font-weight: 700; line-height: 1.3">A new version is ready.</span>
+      <button style="flex: none; height: 52px; padding: 0 18px; border-radius: 14px; border: 0; background: #1F3A5F; color: #FFFFFF; font: inherit; font-size: 19px; font-weight: 800">Refresh</button>
+    </div>
+    <div style="box-sizing: border-box; padding: 12px 12px 12px 18px; background: #E6ECF3; border: 2px solid #7F96B2; border-radius: 18px; display: flex; align-items: center; gap: 14px; opacity: 1">
+      <svg width="28" height="28" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1F3A5F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M20 11a8 8 0 1 0-2.3 5.7"></path><path d="M20 4v7h-7"></path></svg>
+      <span style="flex: 1 1 auto; font-size: 19px; font-weight: 700; line-height: 1.3">Updating…</span>
+    </div>
+    <p style="margin: 0; font-size: 17px; line-height: 1.45; color: #4A453C">Sits under the top bar on Home and Levels only — never during a puzzle. Refreshes after the current puzzle is saved.</p>
+  </div>
+
+  <!-- Install card -->
+  <div style="display: flex; flex-direction: column; gap: 16px">
+    <div style="font-size: 16px; font-weight: 800; letter-spacing: 0.06em; color: #4A453C">INSTALL CARD</div>
+    <section style="box-sizing: border-box; padding: 24px; background: #FFFDF8; border: 2px solid #E2D8C4; border-radius: 22px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 2px 6px rgba(60,45,20,0.08)">
+      <h2 style="margin: 0; font-family: ui-serif, 'New York', Georgia, serif; font-size: 25px; font-weight: 700; line-height: 1.2">Keep Word Search on your Home Screen</h2>
+      <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px">
+        <li style="display: flex; align-items: center; gap: 14px">
+          <span style="width: 36px; height: 36px; flex: none; border-radius: 50%; background: #1F3A5F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 19px; font-weight: 800">1</span>
+          <span style="font-size: 19px; font-weight: 600; line-height: 1.3; display: flex; align-items: center; gap: 8px; flex-wrap: wrap">Tap Share
+            <svg width="28" height="28" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1F3A5F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Share button"><path d="M12 15V3"></path><path d="M8 7l4-4 4 4"></path><path d="M8 10H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-2"></path></svg>
+          </span>
+        </li>
+        <li style="display: flex; align-items: center; gap: 14px">
+          <span style="width: 36px; height: 36px; flex: none; border-radius: 50%; background: #1F3A5F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 19px; font-weight: 800">2</span>
+          <span style="font-size: 19px; font-weight: 600; line-height: 1.3; display: flex; align-items: center; gap: 8px; flex-wrap: wrap">Choose <b>Add to Home Screen</b>
+            <svg width="28" height="28" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1F3A5F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><path d="M12 8v8M8 12h8"></path></svg>
+          </span>
+        </li>
+        <li style="display: flex; align-items: center; gap: 14px">
+          <span style="width: 36px; height: 36px; flex: none; border-radius: 50%; background: #1F3A5F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 19px; font-weight: 800">3</span>
+          <span style="font-size: 19px; font-weight: 600; line-height: 1.3">Open it once with Wi-Fi on. After that it works offline.</span>
+        </li>
+      </ol>
+      <button style="height: 56px; border-radius: 16px; border: 2px solid #8C8270; background: #FFFDF8; font: inherit; font-size: 19px; font-weight: 700; color: #1E1C18">Not now</button>
+    </section>
+    <p style="margin: 0; font-size: 17px; line-height: 1.45; color: #4A453C">Shown on Home only when opened in a normal Safari tab. "Not now" hides it for 7 days.</p>
+  </div>
+
+  <!-- Error state -->
+  <div style="display: flex; flex-direction: column; gap: 16px">
+    <div style="font-size: 16px; font-weight: 800; letter-spacing: 0.06em; color: #4A453C">SAVED PROGRESS COULDN'T LOAD</div>
+    <section style="box-sizing: border-box; padding: 28px 24px; background: #FFFDF8; border: 2px solid #E2D8C4; border-radius: 22px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; box-shadow: 0 2px 6px rgba(60,45,20,0.08)">
+      <svg width="104" height="104" sc-camel-view-box="0 0 120 120" fill="none" aria-hidden="true">
+        <circle cx="60" cy="60" r="56" fill="#E6ECF3" stroke="#7F96B2" stroke-width="3"></circle>
+        <rect x="34" y="34" width="52" height="52" rx="8" fill="#FFFDF8" stroke="#1F3A5F" stroke-width="3"></rect>
+        <path d="M34 51h52M34 69h52M51 34v52M69 34v52" stroke="#1F3A5F" stroke-width="2" opacity="0.4"></path>
+        <path d="M44 60h32" stroke="#1F3A5F" stroke-width="12" stroke-linecap="round" opacity="0.25"></path>
+        <circle cx="86" cy="86" r="14" fill="#FBE3B5" stroke="#A86400" stroke-width="3"></circle>
+        <path d="M86 79v8" stroke="#6B4200" stroke-width="3.4" stroke-linecap="round"></path>
+        <circle cx="86" cy="92.5" r="1.8" fill="#6B4200"></circle>
+      </svg>
+      <h2 style="margin: 0; font-family: ui-serif, 'New York', Georgia, serif; font-size: 25px; font-weight: 700; line-height: 1.2">We couldn't find your saved levels</h2>
+      <p style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 500">The puzzles are all still here. You can try again, or carry on from level 1.</p>
+      <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 4px">
+        <button style="height: 60px; border-radius: 16px; border: 0; background: #1F3A5F; color: #FFFFFF; font: inherit; font-size: 20px; font-weight: 800">Try again</button>
+        <button style="height: 60px; border-radius: 16px; border: 2px solid #8C8270; background: #FFFDF8; color: #1E1C18; font: inherit; font-size: 20px; font-weight: 700">Carry on from level 1</button>
+      </div>
+    </section>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:820}}">
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+
+
+</body></html>

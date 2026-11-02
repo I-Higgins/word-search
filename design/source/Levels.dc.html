@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Levels — Fishing</title>
+<script src="87f3f27c-4f48-46bc-8459-5ee2b53aa32d"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+a{color:#1F3A5F}a:hover{color:#142842}
+</style>
+</helmet>
+<div style="width: {{W}}px; height: {{H}}px; position: relative; overflow: hidden; background: #F6F1E7; color: #1E1C18; font-family: ui-rounded, 'SF Pro Rounded', -apple-system, system-ui, 'Segoe UI', sans-serif">
+  <div style="position: absolute; left: {{m}}px; right: {{m}}px; top: {{safeTop}}px; bottom: {{safeBot}}px; display: flex; flex-direction: column; gap: {{gap}}px">
+
+    <header style="height: {{barH}}px; flex: none; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; column-gap: 12px">
+      <button style="justify-self: start; height: {{btnH}}px; padding: 0 {{btnPadR}}px 0 {{btnPadL}}px; display: flex; align-items: center; gap: 6px; background: #FFFDF8; border: 2px solid #8C8270; border-radius: {{btnR}}px; font: inherit; font-size: {{f.btn}}px; font-weight: 700; color: #1E1C18">
+        <svg width="{{f.icon}}" height="{{f.icon}}" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+        Topics
+      </button>
+      <div style="display: flex; align-items: center; gap: 10px">
+        <span aria-hidden="true" style="width: {{disc}}px; height: {{disc}}px; border-radius: 50%; background: #CFE4F1; display: flex; align-items: center; justify-content: center; flex: none">
+          <dc-import name="CatIcon" icon="fishing" size="{{discIcon}}" color="#1F3A5F" hint-size="32px,32px"></dc-import>
+        </span>
+        <h1 style="margin: 0; font-family: ui-serif, 'New York', Georgia, serif; font-size: {{f.title}}px; font-weight: 700; line-height: 1.1">Fishing</h1>
+      </div>
+      <div style="justify-self: end; font-size: {{f.body}}px; font-weight: 700; color: #4A453C; white-space: nowrap">{{doneText}}</div>
+    </header>
+
+    <button style="flex: none; height: {{playH}}px; display: flex; align-items: center; justify-content: center; gap: 14px; background: #1F3A5F; border: 0; border-radius: 22px; color: #FFFFFF; font: inherit; font-size: {{f.play}}px; font-weight: 800; box-shadow: 0 2px 8px rgba(31,58,95,0.25)">
+      <svg width="{{f.icon}}" height="{{f.icon}}" sc-camel-view-box="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.2-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5z"></path></svg>
+      Play level 12
+    </button>
+
+    <sc-if value="{{segmented}}" hint-placeholder-val="{{ true }}">
+      <div role="radiogroup" aria-label="Choose a group of levels" style="flex: none; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; padding: 6px; background: #EDE6D8; border-radius: 20px">
+        <sc-for list="{{ranges}}" as="r" hint-placeholder-count="6">
+          <sc-if value="{{r.on}}" hint-placeholder-val="{{ false }}">
+            <button role="radio" aria-checked="true" style="height: 56px; border-radius: 15px; border: 2px solid #1F3A5F; background: #FFFDF8; font: inherit; font-size: {{f.seg}}px; font-weight: 800; color: #1E1C18; box-shadow: 0 1px 3px rgba(60,45,20,0.12)">{{r.label}}</button>
+          </sc-if>
+          <sc-if value="{{r.off}}" hint-placeholder-val="{{ true }}">
+            <button role="radio" aria-checked="false" style="height: 56px; border-radius: 15px; border: 0; background: transparent; font: inherit; font-size: {{f.seg}}px; font-weight: 700; color: #3D382F">{{r.label}}</button>
+          </sc-if>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{stepper}}" hint-placeholder-val="{{ false }}">
+      <div style="flex: none; display: flex; align-items: center; justify-content: space-between; gap: 8px">
+        <button aria-label="Earlier levels" style="width: 64px; height: 52px; border-radius: 16px; border: 2px solid #8C8270; background: #FFFDF8; color: #1E1C18; display: flex; align-items: center; justify-content: center; opacity: 0.45">
+          <svg width="24" height="24" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+        </button>
+        <div style="font-size: 20px; font-weight: 800">Levels 1–20</div>
+        <button aria-label="Later levels" style="width: 64px; height: 52px; border-radius: 16px; border: 2px solid #8C8270; background: #FFFDF8; color: #1E1C18; display: flex; align-items: center; justify-content: center">
+          <svg width="24" height="24" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
+        </button>
+      </div>
+    </sc-if>
+
+    <ul style="flex: 1 1 auto; min-height: 0; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat({{cols}}, minmax(0, 1fr)); grid-auto-rows: minmax(0, 1fr); gap: {{tileGap}}px">
+      <sc-for list="{{levels}}" as="l" hint-placeholder-count="20">
+        <li style="min-height: 0">
+          <sc-if value="{{l.done}}" hint-placeholder-val="{{ false }}">
+            <button aria-label="Level {{l.n}}, done" style="width: 100%; height: 100%; box-sizing: border-box; border-radius: 18px; border: 2px solid #9CC9B6; background: #E3F2EB; color: #1E1C18; font: inherit; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px">
+              <span style="font-size: {{f.num}}px; font-weight: 800; line-height: 1">{{l.n}}</span>
+              <span style="display: flex; align-items: center; gap: 4px; font-size: {{f.small}}px; font-weight: 700; color: #1F5B45">
+                <svg width="{{f.small}}" height="{{f.small}}" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+                Done
+              </span>
+            </button>
+          </sc-if>
+          <sc-if value="{{l.current}}" hint-placeholder-val="{{ false }}">
+            <button aria-label="Level {{l.n}}, play next" style="width: 100%; height: 100%; box-sizing: border-box; border-radius: 18px; border: 0; background: #1F3A5F; color: #FFFFFF; font: inherit; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; box-shadow: 0 0 0 4px #F6F1E7, 0 0 0 7px #1F3A5F">
+              <span style="font-size: {{f.num}}px; font-weight: 800; line-height: 1">{{l.n}}</span>
+              <span style="font-size: {{f.small}}px; font-weight: 700; color: #DCE5F0">Play</span>
+            </button>
+          </sc-if>
+          <sc-if value="{{l.todo}}" hint-placeholder-val="{{ true }}">
+            <button aria-label="Level {{l.n}}, not played yet" style="width: 100%; height: 100%; box-sizing: border-box; border-radius: 18px; border: 2px solid #CFC5B1; background: #FFFDF8; color: #1E1C18; font: inherit; display: flex; align-items: center; justify-content: center">
+              <span style="font-size: {{f.num}}px; font-weight: 700; line-height: 1">{{l.n}}</span>
+            </button>
+          </sc-if>
+        </li>
+      </sc-for>
+    </ul>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;layout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;landscape&quot;,&quot;portrait&quot;,&quot;phone&quot;],&quot;default&quot;:&quot;landscape&quot;},&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:820}}">
+class Component extends DCLogic {
+  renderVals() {
+    var L = this.props.layout || 'landscape';
+    var phone = L === 'phone', portrait = L === 'portrait';
+    var W = phone ? 390 : (portrait ? 820 : 1180);
+    var H = phone ? 844 : (portrait ? 1180 : 820);
+    var f = phone
+      ? { title:24, btn:18, icon:24, body:16, play:22, seg:18, num:26, small:15 }
+      : { title:32, btn:22, icon:28, body:20, play:26, seg:20, num:36, small:17 };
+    var current = 12;
+    var levels = [];
+    for (var i = 1; i <= 20; i++) levels.push({ n:i, done:i < current, current:i === current, todo:i > current });
+    var labels = ['1–20','21–40','41–60','61–80','81–100','101–120'];
+    var ranges = labels.map(function (x, i) { return { label:x, on:i === 0, off:i !== 0 }; });
+    return {
+      W:W, H:H, f:f, levels:levels, ranges:ranges,
+      segmented: !phone, stepper: phone,
+      doneText: phone ? '11 done' : '11 of 120 done',
+      m: phone ? 12 : 32, safeTop: phone ? 54 : 24, safeBot: phone ? 42 : 36, gap: phone ? 14 : 20,
+      barH: phone ? 52 : 64, btnH: phone ? 52 : 60, btnR: phone ? 26 : 30, btnPadL: phone ? 10 : 16, btnPadR: phone ? 14 : 24,
+      disc: phone ? 40 : 52, discIcon: phone ? 26 : 34,
+      playH: phone ? 72 : 88,
+      cols: phone ? 4 : (portrait ? 4 : 5), tileGap: phone ? 10 : 16
+    };
+  }
+}
+</script>
+
+
+</body></html>

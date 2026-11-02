@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Settings</title>
+<script src="18b12543-2082-4d8e-8b0a-f30b777fdf87"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+a{color:#1F3A5F}a:hover{color:#142842}
+</style>
+</helmet>
+<div style="width: {{W}}px; height: {{H}}px; position: relative; overflow: hidden; background: #F6F1E7; color: #1E1C18; font-family: ui-rounded, 'SF Pro Rounded', -apple-system, system-ui, 'Segoe UI', sans-serif">
+  <div style="position: absolute; left: {{m}}px; right: {{m}}px; top: {{safeTop}}px; bottom: 0; display: flex; flex-direction: column; gap: {{gap}}px">
+
+    <header style="height: {{barH}}px; flex: none; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; column-gap: 12px">
+      <button style="justify-self: start; height: {{btnH}}px; padding: 0 {{btnPadR}}px 0 {{btnPadL}}px; display: flex; align-items: center; gap: 6px; background: #FFFDF8; border: 2px solid #8C8270; border-radius: {{btnR}}px; font: inherit; font-size: {{f.btn}}px; font-weight: 700; color: #1E1C18">
+        <svg width="{{f.icon}}" height="{{f.icon}}" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+        Back
+      </button>
+      <h1 style="margin: 0; font-family: ui-serif, 'New York', Georgia, serif; font-size: {{f.title}}px; font-weight: 700">Settings</h1>
+      <div></div>
+    </header>
+
+    <div style="display: grid; grid-template-columns: repeat({{cols}}, minmax(0, 1fr)); gap: {{gap}}px; align-items: start">
+      <div style="display: flex; flex-direction: column; gap: {{gap}}px">
+
+        <section style="box-sizing: border-box; padding: {{pad}}px; background: #FFFDF8; border: 2px solid #E2D8C4; border-radius: 20px; display: flex; flex-direction: column; gap: 14px">
+          <h2 style="margin: 0; font-size: {{f.h2}}px; font-weight: 800">Text size</h2>
+          <div role="radiogroup" aria-label="Text size" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+            <sc-for list="{{sizes}}" as="o" hint-placeholder-count="3">
+              <button role="radio" aria-checked="{{o.aria}}" style="position: relative; height: {{optH}}px; box-sizing: border-box; border-radius: 16px; border: {{o.bw}}px solid {{o.border}}; background: {{o.bg}}; font: inherit; color: #1E1C18; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px">
+                <span aria-hidden="true" style="font-family: ui-serif, 'New York', Georgia, serif; font-size: {{o.sample}}px; font-weight: 700; line-height: 1">Aa</span>
+                <span style="font-size: {{f.opt}}px; font-weight: 700">{{o.label}}</span>
+                <sc-if value="{{o.on}}" hint-placeholder-val="{{ false }}">
+                  <span aria-hidden="true" style="position: absolute; right: 8px; top: 8px; width: 24px; height: 24px; border-radius: 50%; background: #1F3A5F; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+                    <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+                  </span>
+                </sc-if>
+              </button>
+            </sc-for>
+          </div>
+        </section>
+
+        <section style="box-sizing: border-box; padding: {{pad}}px; background: #FFFDF8; border: 2px solid #E2D8C4; border-radius: 20px; display: flex; flex-direction: column; gap: 14px">
+          <h2 style="margin: 0; font-size: {{f.h2}}px; font-weight: 800">Colours</h2>
+          <div role="radiogroup" aria-label="Colours" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+            <sc-for list="{{themes}}" as="o" hint-placeholder-count="3">
+              <button role="radio" aria-checked="{{o.aria}}" style="position: relative; height: {{optH}}px; box-sizing: border-box; border-radius: 16px; border: {{o.bw}}px solid {{o.border}}; background: {{o.bg}}; font: inherit; color: #1E1C18; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px">
+                <span aria-hidden="true" style="width: 52px; height: 34px; box-sizing: border-box; border-radius: 8px; background: {{o.sw}}; border: 2px solid {{o.swLine}}; color: {{o.swInk}}; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800">A</span>
+                <span style="font-size: {{f.opt}}px; font-weight: 700; text-align: center; line-height: 1.1">{{o.label}}</span>
+                <sc-if value="{{o.on}}" hint-placeholder-val="{{ false }}">
+                  <span aria-hidden="true" style="position: absolute; right: 8px; top: 8px; width: 24px; height: 24px; border-radius: 50%; background: #1F3A5F; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+                    <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+                  </span>
+                </sc-if>
+              </button>
+            </sc-for>
+          </div>
+        </section>
+
+        <section style="box-sizing: border-box; padding: {{pad}}px; background: #FFFDF8; border: 2px solid #E2D8C4; border-radius: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+          <div style="display: flex; flex-direction: column; gap: 4px">
+            <h2 style="margin: 0; font-size: {{f.h2}}px; font-weight: 800">Sounds</h2>
+            <span style="font-size: {{f.body}}px; font-weight: 500; color: #4A453C">Soft sounds when you find a word</span>
+          </div>
+          <label style="display: flex; align-items: center; gap: 12px; flex: none; font-size: {{f.body}}px; font-weight: 800">
+            Off
+            <span role="switch" aria-checked="false" aria-label="Sounds" style="width: 76px; height: 44px; box-sizing: border-box; border-radius: 22px; background: #EDE6D8; border: 2px solid #8C8270; display: flex; align-items: center; padding: 3px">
+              <span aria-hidden="true" style="width: 34px; height: 34px; border-radius: 50%; background: #FFFFFF; border: 2px solid #8C8270; box-sizing: border-box"></span>
+            </span>
+          </label>
+        </section>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: {{gap}}px">
+        <section style="box-sizing: border-box; padding: {{pad}}px; background: #FFFDF8; border: 2px solid #E2D8C4; border-radius: 20px; display: flex; flex-direction: column; gap: 12px">
+          <h2 style="margin: 0; font-size: {{f.h2}}px; font-weight: 800">Help</h2>
+          <button style="height: 60px; border-radius: 16px; border: 2px solid #8C8270; background: #FFFDF8; font: inherit; font-size: {{f.btn}}px; font-weight: 700; color: #1E1C18; display: flex; align-items: center; justify-content: center; gap: 10px">
+            <svg width="26" height="26" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M9.3 9.3a2.8 2.8 0 0 1 5.4 1c0 1.9-2.7 2.4-2.7 4"></path><circle cx="12" cy="17.6" r="0.6" fill="currentColor"></circle></svg>
+            Show how to play
+          </button>
+        </section>
+
+        <section style="box-sizing: border-box; padding: {{pad}}px; background: #FFFDF8; border: 2px solid #E2D8C4; border-radius: 20px; display: flex; flex-direction: column; gap: 12px">
+          <h2 style="margin: 0; font-size: {{f.h2}}px; font-weight: 800">Your progress</h2>
+          <p style="margin: 0; font-size: {{f.body}}px; line-height: 1.4; color: #4A453C; font-weight: 500">Start every topic again from level 1.</p>
+          <button style="height: 60px; border-radius: 16px; border: 2px solid #8B2E22; background: #FFFDF8; font: inherit; font-size: {{f.btn}}px; font-weight: 700; color: #8B2E22">Reset progress…</button>
+        </section>
+
+        <section style="box-sizing: border-box; padding: {{pad}}px; background: #FFFDF8; border: 2px solid #E2D8C4; border-radius: 20px; display: flex; flex-direction: column; gap: 10px">
+          <h2 style="margin: 0; font-size: {{f.h2}}px; font-weight: 800">About</h2>
+          <p style="margin: 0; font-size: {{f.body}}px; line-height: 1.45; font-weight: 500">Word Search is free, with no ads. It works without the internet once installed.</p>
+          <p style="margin: 0; font-size: {{f.body}}px; line-height: 1.45; font-weight: 500">Your progress stays on this device. Nothing is sent anywhere.</p>
+          <p style="margin: 0; font-size: {{f.body}}px; line-height: 1.45; font-weight: 500">Open source: <a href="#source" style="font-weight: 700">see the code</a> · Version 1.0</p>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{dialog}}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; background: rgba(30,28,24,0.5); display: flex; align-items: center; justify-content: center; padding: 16px; box-sizing: border-box">
+      <div role="alertdialog" aria-modal="true" aria-labelledby="ws-reset-t" aria-describedby="ws-reset-d" style="width: {{dlgW}}px; box-sizing: border-box; padding: {{dlgPad}}px; background: #FFFDF8; border: 2px solid #E2D8C4; border-radius: 28px; box-shadow: 0 16px 48px rgba(30,28,24,0.25); display: flex; flex-direction: column; gap: 16px">
+        <h2 id="ws-reset-t" style="margin: 0; font-family: ui-serif, 'New York', Georgia, serif; font-size: {{f.dlgTitle}}px; font-weight: 700; line-height: 1.2">Start again from level 1?</h2>
+        <p id="ws-reset-d" style="margin: 0; font-size: {{f.body}}px; line-height: 1.45; font-weight: 500">This clears the levels you've finished in every topic. It can't be undone.</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 8px">
+          <button style="height: 64px; border-radius: 18px; border: 0; background: #1F3A5F; color: #FFFFFF; font: inherit; font-size: {{f.btn}}px; font-weight: 800">Keep my progress</button>
+          <button style="height: 64px; border-radius: 18px; border: 2px solid #8B2E22; background: #FFFDF8; color: #8B2E22; font: inherit; font-size: {{f.btn}}px; font-weight: 700">Yes, reset everything</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;layout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;landscape&quot;,&quot;portrait&quot;,&quot;phone&quot;],&quot;default&quot;:&quot;landscape&quot;},&quot;dialog&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false},&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:820}}">
+class Component extends DCLogic {
+  renderVals() {
+    var L = this.props.layout || 'landscape';
+    var phone = L === 'phone', portrait = L === 'portrait';
+    var W = phone ? 390 : (portrait ? 820 : 1180);
+    var H = phone ? 844 : (portrait ? 1180 : 820);
+    var f = phone
+      ? { title:24, btn:18, icon:24, h2:20, body:16, opt:15, dlgTitle:24 }
+      : { title:32, btn:21, icon:28, h2:24, body:19, opt:18, dlgTitle:30 };
+    function opt(label, on, extra) {
+      var o = { label:label, on:on, aria: on ? 'true' : 'false', bw: on ? 3 : 2, border: on ? '#1F3A5F' : '#CFC5B1', bg: on ? '#E6ECF3' : '#FFFDF8' };
+      for (var k in extra) o[k] = extra[k];
+      return o;
+    }
+    var sizes = [
+      opt('Normal', true, { sample: phone ? 20 : 24 }),
+      opt('Large', false, { sample: phone ? 25 : 30 }),
+      opt(phone ? 'X-large' : 'Extra large', false, { sample: phone ? 30 : 36 })
+    ];
+    var themes = [
+      opt('Light', true, { sw:'#F6F1E7', swLine:'#8C8270', swInk:'#1E1C18' }),
+      opt('Dark', false, { sw:'#20252B', swLine:'#20252B', swInk:'#F2EEE6' }),
+      opt('High contrast', false, { sw:'#FFFFFF', swLine:'#000000', swInk:'#000000' })
+    ];
+    return {
+      W:W, H:H, f:f, sizes:sizes, themes:themes, dialog: !!this.props.dialog,
+      cols: (phone || portrait) ? 1 : 2,
+      m: phone ? 12 : 32, safeTop: phone ? 54 : 24, gap: phone ? 12 : 20, pad: phone ? 16 : 22,
+      barH: phone ? 52 : 64, btnH: phone ? 52 : 60, btnR: phone ? 26 : 30, btnPadL: phone ? 10 : 16, btnPadR: phone ? 14 : 24,
+      optH: phone ? 96 : 116, dlgW: phone ? 350 : 520, dlgPad: phone ? 24 : 36
+    };
+  }
+}
+</script>
+
+
+</body></html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Home — choose a topic</title>
+<script src="a6f5346b-3bc0-4931-8ce1-a78dc9401d4b"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+a{color:#1F3A5F}a:hover{color:#142842}
+</style>
+</helmet>
+<div style="width: {{W}}px; height: {{H}}px; position: relative; overflow: hidden; background: #F6F1E7; color: #1E1C18; font-family: ui-rounded, 'SF Pro Rounded', -apple-system, system-ui, 'Segoe UI', sans-serif">
+  <div style="position: absolute; left: {{m}}px; right: {{m}}px; top: {{safeTop}}px; bottom: 0; display: flex; flex-direction: column; gap: {{gap}}px">
+
+    <header style="height: {{barH}}px; flex: none; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+      <h1 style="margin: 0; font-family: ui-serif, 'New York', Georgia, serif; font-size: {{f.title}}px; font-weight: 700; line-height: 1.1">Word Search</h1>
+      <button style="height: {{btnH}}px; padding: 0 {{btnPad}}px; display: flex; align-items: center; gap: 8px; background: #FFFDF8; border: 2px solid #8C8270; border-radius: {{btnR}}px; font: inherit; font-size: {{f.btn}}px; font-weight: 700; color: #1E1C18">
+        <svg width="{{f.icon}}" height="{{f.icon}}" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"></path></svg>
+        Settings
+      </button>
+    </header>
+
+    <button style="flex: none; height: {{contH}}px; box-sizing: border-box; padding: 0 {{contPad}}px; display: flex; align-items: center; gap: {{contGap}}px; background: #1F3A5F; border: 0; border-radius: 22px; color: #FFFFFF; font: inherit; text-align: left; box-shadow: 0 2px 8px rgba(31,58,95,0.25)">
+      <span aria-hidden="true" style="width: {{contDisc}}px; height: {{contDisc}}px; flex: none; border-radius: 50%; background: #FFFDF8; display: flex; align-items: center; justify-content: center">
+        <dc-import name="CatIcon" icon="fishing" size="{{contIcon}}" color="#1F3A5F" hint-size="40px,40px"></dc-import>
+      </span>
+      <span style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: {{f.cont}}px; font-weight: 800; line-height: 1.15">Continue</span>
+        <span style="font-size: {{f.body}}px; font-weight: 600; line-height: 1.25; color: #DCE5F0">Fishing · Level 12</span>
+      </span>
+      <svg width="{{f.icon}}" height="{{f.icon}}" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
+    </button>
+
+    <h2 style="margin: 4px 0 0; flex: none; font-family: ui-serif, 'New York', Georgia, serif; font-size: {{f.h2}}px; font-weight: 700">Choose a topic</h2>
+
+    <ul style="margin: 0; padding: 0 0 40px; list-style: none; display: grid; grid-template-columns: repeat({{cols}}, minmax(0, 1fr)); gap: {{tileGap}}px">
+      <sc-for list="{{cats}}" as="c" hint-placeholder-count="16">
+        <li>
+          <button style="width: 100%; min-height: {{tileH}}px; box-sizing: border-box; padding: {{tilePad}}px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; background: #FFFDF8; border: 2px solid #E2D8C4; border-radius: 20px; font: inherit; text-align: left; color: #1E1C18; box-shadow: 0 1px 3px rgba(60,45,20,0.06)">
+            <span aria-hidden="true" style="width: {{discS}}px; height: {{discS}}px; border-radius: 50%; background: {{c.tint}}; display: flex; align-items: center; justify-content: center">
+              <dc-import name="CatIcon" icon="{{c.key}}" size="{{iconS}}" color="#1F3A5F" hint-size="40px,40px"></dc-import>
+            </span>
+            <span style="font-size: {{f.tile}}px; font-weight: 800; line-height: 1.2">{{c.name}}</span>
+            <span style="font-size: {{f.small}}px; font-weight: 600; line-height: 1.25; color: #4A453C">{{c.progress}}</span>
+            <span aria-hidden="true" style="width: 100%; height: 8px; border-radius: 4px; background: #EDE6D8; overflow: hidden; display: block">
+              <span style="display: block; height: 8px; width: {{c.pct}}%; border-radius: 4px; background: #1F3A5F"></span>
+            </span>
+          </button>
+        </li>
+      </sc-for>
+    </ul>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;layout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;landscape&quot;,&quot;portrait&quot;,&quot;phone&quot;],&quot;default&quot;:&quot;landscape&quot;},&quot;textSize&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;normal&quot;,&quot;large&quot;,&quot;xl&quot;],&quot;default&quot;:&quot;normal&quot;},&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:820}}">
+class Component extends DCLogic {
+  renderVals() {
+    var L = this.props.layout || 'landscape';
+    var phone = L === 'phone', portrait = L === 'portrait';
+    var W = phone ? 390 : (portrait ? 820 : 1180);
+    var H = phone ? 844 : (portrait ? 1180 : 820);
+    var tsKey = this.props.textSize || 'normal';
+    var s = { normal:1, large:1.15, xl:1.3 }[tsKey] || 1;
+    var base = phone
+      ? { title:26, btn:18, icon:24, cont:24, body:17, h2:22, tile:18, small:15 }
+      : { title:36, btn:22, icon:28, cont:30, body:20, h2:28, tile:22, small:18 };
+    var f = {};
+    Object.keys(base).forEach(function (k) { f[k] = k === 'icon' ? base[k] : Math.round(base[k] * s); });
+    var big = tsKey === 'xl';
+    var tints = ['#CFE4F1','#FBE3B5','#CBEBDD','#F0D9EA','#F9D9C8','#D3ECF8','#F3EA94','#E3E5E8'];
+    var data = [
+      ['fishing','Fishing',12],['boats','Boats & Sailing',4],['cars','Cars',9],['classic','Classic Cars & Motorsport',0],
+      ['animals','Animals',21],['birds','Birds',5],['places','Australia & NZ Places',0],['sport','Sport',2],
+      ['food','Food & Cooking',0],['garden','Garden & Plants',0],['weather','Weather & Nature',0],['music','Music',0],
+      ['house','Around the House',0],['space','Space',0],['ocean','Ocean & Beach',3],['trees','Trees & Flowers',0]
+    ];
+    var cats = data.map(function (d, i) {
+      return { key:d[0], name:d[1], tint:tints[i % 8], progress: d[2] ? ('Level ' + d[2] + ' of 120') : 'Not started', pct: Math.max(0, Math.round((d[2] - 1) / 120 * 100)) };
+    });
+    return {
+      W:W, H:H, f:f, cats:cats,
+      m: phone ? 12 : 32, safeTop: phone ? 54 : 24, gap: phone ? 14 : 20,
+      barH: phone ? 52 : 64, btnH: phone ? 52 : 60, btnR: phone ? 26 : 30, btnPad: phone ? 14 : 20,
+      contH: Math.round((phone ? 88 : 104) * Math.min(s, 1.2)), contPad: phone ? 16 : 28, contGap: phone ? 14 : 20, contDisc: phone ? 56 : 68, contIcon: phone ? 36 : 44,
+      cols: phone ? 2 : (portrait ? (big ? 2 : 3) : (big ? 3 : 4)), tileGap: phone ? 10 : 16, tileH: phone ? 170 : 196, tilePad: phone ? 14 : 20,
+      discS: phone ? 52 : 64, iconS: phone ? 34 : 42
+    };
+  }
+}
+</script>
+
+
+</body></html>

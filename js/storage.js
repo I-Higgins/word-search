@@ -17,7 +17,7 @@ function emptyState() {
     version: 1,
     settings: { ...DEFAULT_SETTINGS },
     completed: {}, // { [categoryId]: number[] }
-    game: null, // { categoryId, level, found: number[] } — the puzzle in progress
+    game: null, // { categoryId, level, found: string[] (words found) } — the puzzle in progress
     route: null, // last screen, to resume where they left off
     lastCategory: null, // for the Continue button after a level is finished
   };
@@ -44,7 +44,7 @@ function sanitise(raw) {
   }
   const g = raw.game;
   if (g && typeof g.categoryId === 'string' && Number.isInteger(g.level) && Array.isArray(g.found)) {
-    s.game = { categoryId: g.categoryId, level: g.level, found: g.found.filter(Number.isInteger) };
+    s.game = { categoryId: g.categoryId, level: g.level, found: g.found.filter((x) => typeof x === 'string') };
   }
   if (typeof raw.route === 'string' && raw.route.length < 200) s.route = raw.route;
   if (typeof raw.lastCategory === 'string') s.lastCategory = raw.lastCategory;

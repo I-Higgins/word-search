@@ -402,11 +402,9 @@ class Game {
     this.levelNum = levelNum;
     this.level = generateLevel(cat, levelNum);
     const saved = store.getGame();
-    this.found = new Set(
-      saved && saved.categoryId === cat.id && saved.level === levelNum
-        ? saved.found.filter((i) => i >= 0 && i < this.level.words.length)
-        : [],
-    );
+    // Found words are saved by name, so a changed word list can't mark the wrong words.
+    const savedWords = saved && saved.categoryId === cat.id && saved.level === levelNum ? saved.found : [];
+    this.found = new Set(this.level.words.map((w, i) => (savedWords.includes(w.display) ? i : -1)).filter((i) => i >= 0));
     this.justFound = -1;
     this.hint = -1;
     this.anchor = null;
@@ -428,12 +426,14 @@ class Game {
       const el = e.target.closest('.cell');
       if (el) this.input.tap([+el.dataset.r, +el.dataset.c]);
     });
-    store.saveGame(cat.id, levelNum, this.found);
+    store.saveGame(cat.id, levelNum, this.foundWords());
     this.paint();
     if (this.found.size === this.level.words.length) this.complete(false);
   }
 
   destroy() { this.input.destroy(); }
+
+  foundWords() { return [...this.found].map((i) => this.level.words[i].display); }
 
   cellEl(r, c) { return this.cellEls[r * this.level.size + c]; }
 
@@ -443,7 +443,7 @@ class Game {
       this.found.add(idx);
       this.justFound = idx;
       if (this.hint === idx) this.hint = -1;
-      store.saveGame(this.cat.id, this.levelNum, this.found);
+      store.saveGame(this.cat.id, this.levelNum, this.foundWords());
       if (store.getSettings().sound) playFound();
       const left = this.level.words.length - this.found.size;
       announce(`Found ${this.level.words[idx].display}. ${left ? `${left} to go.` : 'All words found!'}`);

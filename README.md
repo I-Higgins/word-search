@@ -120,7 +120,7 @@ npm run icons
 
 ### Deploying
 
-Pushing to `main` runs `.github/workflows/pages.yml`. It runs the unit tests, copies only the app files into `_site/`, stamps the service worker with the commit id, and publishes to GitHub Pages. A new version shows a **"A new version is ready"** banner on the Home and Levels screens only, never mid-puzzle.
+Pushing to `master` runs `.github/workflows/pages.yml`. It runs the unit tests, copies only the app files into `_site/`, stamps the service worker with the commit id, and publishes to GitHub Pages. A new version shows a **"A new version is ready"** banner on the Home and Levels screens only, never mid-puzzle.
 
 The first time, turn on Pages in the repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
